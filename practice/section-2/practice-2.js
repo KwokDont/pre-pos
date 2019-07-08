@@ -1,5 +1,31 @@
 'use strict';
 
 function countSameElements(collection) {
-  return '实现练习要求，并改写该行代码。';
+  var flagChar = '';
+  var num = 0;
+  var returnArr = new Array();
+  var length = collection.length;
+  collection.forEach(v=>{
+    if(flagChar == ''){
+      flagChar = v;
+      num++;
+    }else if(flagChar != v){
+      var ob = {key:flagChar, count:num};
+      returnArr.push(ob);
+      if(v.indexOf("-") > 0){
+        var split = v.split("-");
+        var ob = {key:split[0], count:Number(split[1])};
+        returnArr.push(ob);
+      }
+      flagChar = v;
+      num = 1;
+    } else{
+      num++;
+      if(collection.indexOf(v)+num == length){
+        var ob = {key:flagChar, count:num};
+        returnArr.push(ob);
+      }
+    }
+  });
+  return returnArr;
 }

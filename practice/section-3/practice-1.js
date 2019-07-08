@@ -1,5 +1,12 @@
 'use strict';
 
 function createUpdatedCollection(collectionA, objectB) {
-  return '实现练习要求，并改写该行代码。';
+  collectionA.forEach(v=> {
+    for(var i = 0 ; i < objectB['value'].length ; i++){
+      if(v['key'] == objectB['value'][i]){
+        v['count'] = v['count']-1;
+      }
+    }
+  });
+  return collectionA;
 }
